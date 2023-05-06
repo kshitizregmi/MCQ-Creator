@@ -1,0 +1,36 @@
+{
+    "question": {
+        "text": "",
+        "image": null
+    },
+    "options": {
+        "Option 1": {
+            "option": "\\text{Hello world}",
+            "image": "10.jpeg",
+            "answer": true,
+            "latex": true,
+            "has_image": true
+        },
+        "Option 2": {
+            "option": "```python\ncars = ['Audi', 'Mercedes', 'BMW']\ncars = cars.insert(1, 'Lamborghini')\ncars\n```",
+            "image": null,
+            "answer": false,
+            "latex": false,
+            "has_image": false
+        },
+        "Option 3": {
+            "option": "",
+            "image": null,
+            "answer": false,
+            "latex": false,
+            "has_image": false
+        },
+        "Option 4": {
+            "option": "",
+            "image": null,
+            "answer": false,
+            "latex": false,
+            "has_image": false
+        }
+    }
+}

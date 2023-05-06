@@ -16,25 +16,38 @@ with st.expander("Upload Image (optional)", expanded=False):
 # Create four columns to hold the options and image buttons
 col1, col2, col3, col4 = st.columns(4)
 
+
 # Create a text input and image upload button for each option
 options = {}
+image = None
 for i, col in enumerate([col1, col2, col3, col4]):
     with col:
-        option_input = st.text_input(f"Option {i+1}:", key=f"op{i+1}")
-        if "\\" in option_input:
+        use_latex = st.checkbox("Use LaTeX input", key = f'lip{i+1}')
+        use_image = st.checkbox("Use Image", key = f'useimage{i+1}')
+
+        if use_latex:
+            option_input = st.text_area(f"Option {i+1}:", key=f"op{i+1}")
             option_text = st.latex(option_input)
         else:
+            option_input = st.text_area(f"Option {i+1}:", key=f"op{i+1}")
             option_text = option_input
-        image = st.file_uploader(f"Add an image to Option {i+1}", type=["jpg", "jpeg", "png"], key = f"op{i+1}img")
-        correct_answer = st.multiselect(f"Option {i+1}: Correct answer? ", [True], key=f"opc{i+1}")
-        if not correct_answer:
-            correct_answer = [False]
+            st.write(option_text)
 
-        options[f"Option {i+1}"] = {"option": option_text, "image": image, 'answer': correct_answer}
+        if use_image:
+            image = st.file_uploader(f"Add an image to Option {i+1}", type=["jpg", "jpeg", "png"], key = f"op{i+1}img")
+            image_path = image.name
+
+        else:
+            image_path = None
+
+        correct_answer = st.checkbox("Correct Answer: ", key=f"c{i+1}")
+        options[f"Option {i+1}"] = {"option": option_input, "image": image_path, 'answer': correct_answer, 'latex': use_latex, "has_image" : use_image }
 
 
-# Create a button to submit the options
+# # Create a button to submit the options
 if st.button("Submit Options"):
-    # Print the question and options to the console
     data = {"question": {"text": question, "image": question_image}, "options": options}
-    st.write(json.dumps(data))
+    st.write(data)
+    with open('data.json', "w") as f:
+        json.dump(data, f)
+        # st.write("JSON data written to file:",data.json)
