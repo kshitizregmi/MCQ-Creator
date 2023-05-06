@@ -1,36 +1,40 @@
 {
     "question": {
-        "text": "",
+        "text": "A  card is chosen at random from a standard deck of 52 cards and it is known that the card is a diamond. What is the probability that the card is a queen?",
         "image": null
     },
     "options": {
         "Option 1": {
-            "option": "\\text{Hello world}",
-            "image": "10.jpeg",
-            "answer": true,
-            "latex": true,
-            "has_image": true
-        },
-        "Option 2": {
-            "option": "```python\ncars = ['Audi', 'Mercedes', 'BMW']\ncars = cars.insert(1, 'Lamborghini')\ncars\n```",
+            "option": "\\frac{1}{52}",
             "image": null,
             "answer": false,
-            "latex": false,
+            "latex": true,
+            "has_image": false
+        },
+        "Option 2": {
+            "option": "\\frac{1}{13}",
+            "image": null,
+            "answer": true,
+            "latex": true,
             "has_image": false
         },
         "Option 3": {
-            "option": "",
+            "option": "\\frac{1}{4}",
             "image": null,
             "answer": false,
-            "latex": false,
+            "latex": true,
             "has_image": false
         },
         "Option 4": {
-            "option": "",
+            "option": "\\frac{4}{13}",
             "image": null,
             "answer": false,
-            "latex": false,
+            "latex": true,
             "has_image": false
         }
+    },
+    "explanation": {
+        "text": "\\begin{align*}\nP(\\text{Queen}) &= \\frac{4}{52} \\\\\nP(\\text{Diamond}) &= \\frac{13}{52} \\\\\nP(\\text{Diamond} \\mid \\text{Queen}) &= \\frac{1}{4} \\\\\nP(\\text{Queen} \\mid \\text{Diamond}) &= \\frac{P(\\text{Diamond} \\mid \\text{Queen}) \\cdot P(\\text{Queen})}{P(\\text{Diamond})} \\\\\n&= \\frac{\\frac{1}{4} \\cdot \\frac{4}{52}}{\\frac{13}{52}} \\\\\n&= \\frac{1}{13}\n\\end{align*}\n",
+        "latex": true
     }
 }
